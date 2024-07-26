@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraper</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            display: flex;
+            align-items: center;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <input type="text" id="urlInput" placeholder="Enter URL to be scraped" />
+        <button onclick="submitForm()">Submit</button>
+    </div>
+
+    <script>
+        function submitForm() {
+            const urlInput = document.getElementById('urlInput').value;
+            const apiUrl = `https://web-scrapper-api-eta.vercel.app/api/data?url=${encodeURIComponent(urlInput)}`;
+            window.open(apiUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
