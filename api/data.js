@@ -4,8 +4,8 @@ const cheerio = require('cheerio');
 module.exports = async (req, res) => {
     try {
         const url = 'http://books.toscrape.com/';
-        const { src } = await axios.get(url);
-        const $ = cheerio.load(src);
+        const { data: html } = await axios.get(url);
+        const $ = cheerio.load(html);
 
         const data = [];
         $('article.product_pod').each((i, element) => {
@@ -16,6 +16,7 @@ module.exports = async (req, res) => {
 
         res.status(200).json(data);
     } catch (error) {
+        console.error('Scraping error:', error);
         res.status(500).json({ error: 'Failed to scrape data' });
     }
 };
