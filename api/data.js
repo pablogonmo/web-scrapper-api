@@ -4,8 +4,8 @@ const cheerio = require('cheerio');
 module.exports = async (req, res) => {
     try {
         const url = 'http://books.toscrape.com/';
-        const { data } = await axios.get(url);
-        const $ = cheerio.load(data);
+        const { src } = await axios.get(url);
+        const $ = cheerio.load(src);
 
         const data = [];
         $('article.product_pod').each((i, element) => {
