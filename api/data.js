@@ -3,7 +3,12 @@ const cheerio = require('cheerio');
 
 module.exports = async (req, res) => {
     try {
-        const url = 'http://books.toscrape.com/';
+        const url = req.query.url;
+        
+        if (!url) {
+            return res.status(400).json({ error: 'URL parameter is required' });
+        }
+
         const { data: html } = await axios.get(url);
         const $ = cheerio.load(html);
 
