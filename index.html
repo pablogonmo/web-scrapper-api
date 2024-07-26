@@ -35,11 +35,11 @@
         <input type="text" id="urlInput" placeholder="Enter URL to be scraped" />
         <button onclick="submitForm()">Submit</button>
     </div>
- 
+
     <script>
         function submitForm() {
             const urlInput = document.getElementById('urlInput').value;
-            const apiUrl = `https://web-scrapper-api-eta.vercel.app/api/data?url=${encodeURIComponent(urlInput)}`;
+            const apiUrl = `/api/data?url=${encodeURIComponent(urlInput)}`;
             window.open(apiUrl, '_blank');
         }
     </script>
